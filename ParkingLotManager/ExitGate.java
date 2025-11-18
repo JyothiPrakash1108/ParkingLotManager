@@ -6,7 +6,7 @@ public class ExitGate {
         this.gateId = gateId;
         this.parkingLot = parkingLot;
     }
-    public boolean allowExit(Ticket ticket){
+    public double allowExit(Ticket ticket){
         return parkingLot.unparkVehicle(ticket);
     }
 }

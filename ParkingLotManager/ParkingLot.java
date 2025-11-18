@@ -14,7 +14,7 @@ public class ParkingLot {
         this.spotAllocationStrategy = spotAllocationStrategy;
         this.feeCalculationStrategy = feeCalculationStrategy;
     }
-    public Ticket parkVehicleTickete(Vehicle vehicle){
+    public synchronized Ticket parkVehicleTicket(Vehicle vehicle){
         ParkingSpot spot = getFreeSpot(vehicle);
         if(spot == null){
             return null; 
@@ -33,11 +33,11 @@ public class ParkingLot {
         return ticket;
     }
 
-    public boolean unparkVehicle(Ticket ticket) {
-        double amount = feeCalculationStrategy.calculateFee(ticket);
+    public synchronized double unparkVehicle(Ticket ticket) {
         ticket.setExitTime();
+        double amount = feeCalculationStrategy.calculateFee(ticket);
         ParkingSpot spot = ticket.getParkingSpot();
         spot.vacateSpot();
-        return true;
+        return amount;
     }
 }

@@ -7,6 +7,9 @@ public class HourlyCalculationStrategy implements FeeCalculationStrategy {
     @Override
     public double calculateFee(Ticket ticket) {
         long durationInHours = ticket.getDurationInHours();
+         if (durationInHours == 0) {
+            durationInHours = 1;
+        }
         ParkingSpotSize spotSize = ticket.getParkingSpot().getParkingSpotSize();
 
         double ratePerHour = switch (spotSize) {

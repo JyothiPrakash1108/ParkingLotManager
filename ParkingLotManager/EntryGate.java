@@ -7,7 +7,7 @@ public class EntryGate {
         this.parkingLot = parkingLot;
     }
     public Ticket allowEntry(Vehicle vehicle){
-        Ticket ticket = parkingLot.parkVehicleTickete(vehicle);
+        Ticket ticket = parkingLot.parkVehicleTicket(vehicle);
         return ticket;
     }
     public String getGateId(){

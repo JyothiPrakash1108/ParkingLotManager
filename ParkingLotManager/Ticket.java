@@ -30,4 +30,13 @@ public class Ticket {
     public void setExitTime(){
         this.exitTime = LocalDateTime.now();
     }
+
+    public LocalDateTime getExitTime(){
+        return this.exitTime;
+    }
+    public long getDurationInHours() {
+        return java.time.Duration.between(entryTime, exitTime).toHours();
+    }
+
+    
 }
